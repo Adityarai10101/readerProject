@@ -1,24 +1,23 @@
-from bs4 import BeautifulSoup
+from utils import chunk, embed, extract_text
+import sys
+import modal
+from modal import web_endpoint
+# import requests
 
-def extract_text(html):
-    soup = BeautifulSoup(html, 'html.parser')
-    # Using .get_text() method to extract all the text 
-    text = soup.get_text()
-    return text
 
-html_data = """
-<html>
-    <head>
-        <title>Test Page</title>
-    </head>
-    <body>
-        <div>
-            <p>Hello world</p>
-        </div>
-        <h1>Welcome to the Test Page</h1>
-        <p>This is a test paragraph.</p>
-    </body>
-</html>
-"""
 
-print(extract_text(html_data))
+# # get some html just to prove that this works
+# r = requests.get("https://docs.pinecone.io/docs/openai")
+# # print(r.text)
+# print(embed(chunk(extract_text(r.text))))
+reader_image = modal.Image.debian_slim().pip_install("openai", "beautifulsoup4", "pinecone-client")
+
+
+stub = modal.Stub("reader-project")
+
+
+@stub.function(image=reader_image)
+@web_endpoint()
+def pushtovec(text):
+    embed(chunk(extract_text(text)))
+    return True
