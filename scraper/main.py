@@ -12,6 +12,9 @@ html_data = """
         <title>Test Page</title>
     </head>
     <body>
+        <div>
+            <p>Hello world</p>
+        </div>
         <h1>Welcome to the Test Page</h1>
         <p>This is a test paragraph.</p>
     </body>
