@@ -53,8 +53,14 @@ def embed(chunks, model = "text-embedding-ada-002", pineconeIndex=None, batch_si
     # newPineconeIndex.upsert(vectors = list(to_include))
     return True
 
-
-
-
+def summarizeIt(text):
+    completion = openai.ChatCompletion.create(
+    model="gpt-3.5-turbo",
+    messages=[
+        {"role": "system", "content": "You are a helpful assistant that specializes in summarizing text."},
+        {"role": "user", "content": f"{text} \n Please summarize the above text:"}
+    ]
+    )
+    return completion["choices"][0]["message"]["content"]
 
 

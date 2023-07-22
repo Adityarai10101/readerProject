@@ -1,4 +1,4 @@
-from utils import chunk, embed, extract_text
+from utils import chunk, embed, extract_text, summarizeIt
 import sys
 import modal
 from modal import web_endpoint
@@ -21,3 +21,9 @@ stub = modal.Stub("reader-project")
 def pushtovec(text):
     embed(chunk(extract_text(text)))
     return True
+
+@stub.function(image=reader_image)
+@web_endpoint()
+def summarize(text):
+    return summarizeIt(extract_text(text))
+
