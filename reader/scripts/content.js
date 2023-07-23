@@ -41,13 +41,13 @@ if (body) {
   storeVecs(body.textContent);
   // 2. make api call to langchain agent
   // 3. set the summary in the popup to be the value
-  const summary = body.innerHTML;
-  setTimeout(() => {
-    chrome.runtime.sendMessage({ summary }, function (response) {
-      console.log("content script sending message to popup");
-      console.log(response);
-    });
-  }, 2000);
+  // const summary = body.innerHTML;
+  // setTimeout(() => {
+  //   chrome.runtime.sendMessage({ summary }, function (response) {
+  //     console.log("content script sending message to popup");
+  //     console.log(response);
+  //   });
+  // }, 2000);
 } else {
   console.log("body is null");
 }
