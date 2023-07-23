@@ -9,3 +9,8 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   setSummary(request.summary);
   sendResponse("Popup set the summary");
 });
+
+/**
+ * You have to refresh the page, then open the modal. You can't open the modal without
+ * refreshing the page.
+ */

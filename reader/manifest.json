@@ -10,7 +10,15 @@
     "48": "images/icon-48.png",
     "128": "images/icon-128.png"
   },
-  "permissions": ["activeTab", "pageCapture", "storage", "webNavigation"],
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "pageCapture",
+    "storage",
+    "webNavigation",
+    "tabGroups"
+  ],
+  "host_permissions": ["http://*/*", "https://*/*"],
   "content_scripts": [
     {
       "js": ["scripts/content.js"],
