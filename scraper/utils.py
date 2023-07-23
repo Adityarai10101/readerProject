@@ -12,6 +12,7 @@ def createPineconeInstance():
         api_key='8933a9da-5c77-4209-b89b-8884efef24be',  #leaving this in here cuz we have to connect to the same index    
         environment='us-east1-gcp'      
     )
+    print(pinecone.describe_index("readerproject"))
     index = pinecone.Index('readerproject')
     return index
 def extract_text(html, clean=True):
@@ -27,6 +28,8 @@ def chunk(text):
     print(filtered_chunks)
     return filtered_chunks
 def embed(chunks, model = "text-embedding-ada-002", pineconeIndex=None, batch_size=32):
+    
+    
     newPineconeIndex = pineconeIndex
     if pineconeIndex == None:
         newPineconeIndex = createPineconeInstance()
@@ -54,6 +57,7 @@ def embed(chunks, model = "text-embedding-ada-002", pineconeIndex=None, batch_si
     return True
 
 def summarizeIt(text):
+    print(text)
     completion = openai.ChatCompletion.create(
     model="gpt-3.5-turbo",
     messages=[
