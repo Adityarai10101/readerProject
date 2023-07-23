@@ -13,4 +13,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 /**
  * You have to refresh the page, then open the modal. You can't open the modal without
  * refreshing the page.
+ * 
+ * You have to open the popup before the API response has gotten back, so
+ * the timing matters. Clunky demo
  */
