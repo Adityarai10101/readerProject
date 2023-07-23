@@ -1,11 +1,11 @@
 const setSummary = (summary) => {
-  console.log("SETTING THE SUMMARY");
-  console.log("SETTING THE SUMMARY");
-  console.log("SETTING THE SUMMARY");
-  console.log("SETTING THE SUMMARY");
-
   const summaryElement = document.getElementById("summary");
   summaryElement.innerHTML = summary;
 };
 
-setSummary("asdf");
+chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+  console.log("Popup got a message");
+  console.log(request);
+  setSummary(request.summary);
+  sendResponse("Popup set the summary");
+});
