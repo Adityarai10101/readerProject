@@ -19,7 +19,7 @@ import pinecone
 # Load documents from Notion using PsychicLoader
 
 def load_user_data(connector_id):
-    notion_loader = PsychicLoader(api_key=os.getenv("PSYCHIC_SECRET_KEY"), account_id="hackathon", connector_id=ConnectorId.notion.value)
+    notion_loader = PsychicLoader(api_key="78ae72e3-aa7b-4f37-9f96-aa420094b0b1", account_id="bkitano-personal", connector_id=ConnectorId.notion.value)
 
     pinecone.init(api_key="b6a60048-29ac-4843-a441-a6bd0fdb7bc3", environment="asia-southeast1-gcp-free")
     docs = notion_loader.load()
